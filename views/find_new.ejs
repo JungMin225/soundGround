@@ -2,7 +2,6 @@
 
 <main class="find-page">
   <div class="find-layout">
-    <!-- 왼쪽 설명 영역 -->
     <aside class="find-sidebar">
       <h2 class="find-title">Find Ground</h2>
       <p class="find-desc">
@@ -10,7 +9,6 @@
       </p>
     </aside>
 
-    <!-- 오른쪽: 새 글 작성 폼 -->
     <section class="find-main">
       <form
         action="/find"
@@ -18,7 +16,7 @@
         enctype="multipart/form-data"
         class="find-form"
       >
-        <!-- 제목 -->
+
         <div class="find-form-row">
           <label for="title" class="find-form-label">제목 입력</label>
           <input
@@ -30,7 +28,6 @@
           />
         </div>
 
-        <!-- 내용 -->
         <div class="find-form-row">
           <label for="body" class="find-form-label">내용 입력</label>
           <textarea
@@ -42,7 +39,6 @@
           ></textarea>
         </div>
 
-        <!-- 음원 파일 -->
         <div class="find-form-row">
           <label for="audio" class="find-form-label">음원</label>
           <input
@@ -54,7 +50,6 @@
           />
         </div>
 
-        <!-- 버튼 영역 -->
         <div class="find-submit-area find-submit-area--right">
           <button type="submit" class="find-submit-btn">게시하기</button>
         </div>

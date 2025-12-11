@@ -18,13 +18,11 @@ const loginUser = asyncHandler(async (req, res) => {
     return res.status(400).send("아이디가 올바르지 않습니다.");
   }
 
-  // 🔹 bcrypt 사용하는 버전이라면 이렇게 비교:
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
     return res.status(400).send("비밀번호가 올바르지 않습니다.");
   }
 
-  // 세션에 관리자 여부까지 포함
   req.session.user = {
     id: user._id.toString(),
     username: user.username,
@@ -68,7 +66,7 @@ const registerUser = asyncHandler(async (req, res) => {
     return res.status(400).send("이미 사용 중인 아이디입니다.");
   }
 
-  // 🔹 비밀번호 해시
+  // 비밀번호 해시
   const hashedPassword = await bcrypt.hash(password, 10);
 
   // 유저 생성 (DB에는 해시값만 저장)
@@ -92,7 +90,6 @@ const logoutUser = (req, res) => {
   });
 };
 
-// 🔹 여기서 네 개 전부 export
 module.exports = {
   getLogin,
   loginUser,

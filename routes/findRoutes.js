@@ -10,7 +10,6 @@ const {
   createFindComment,
 } = require("../controllers/findController");
 
-// ===== multer 설정 (Find Ground 음원 업로드용) =====
 const storage = multer.diskStorage({
   destination(req, file, cb) {
     cb(null, path.join(__dirname, "../uploads/find"));
@@ -23,7 +22,6 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  // 기본적으로 오디오 파일만 허용 (audio/*)
   if (file.mimetype.startsWith("audio/")) {
     cb(null, true);
   } else {
@@ -35,11 +33,10 @@ const upload = multer({
   storage,
   fileFilter,
   limits: {
-    fileSize: 20 * 1024 * 1024, // 20MB 정도 제한
+    fileSize: 20 * 1024 * 1024,
   },
 });
 
-// ===== 라우트 =====
 
 // 목록
 router.get("/", showFind);

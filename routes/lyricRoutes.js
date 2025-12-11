@@ -6,7 +6,7 @@ const {
   showLyricList,
   showNewLyric,
   createLyric,
-  showLyricDetail, // 상세를 쓸 거라면
+  showLyricDetail,
 } = require("../controllers/lyricController");
 
 const { requireLogin } = require("../middlewares/auth");
@@ -22,7 +22,7 @@ router.get("/new", showNewLyric);
 // 저장
 router.post("/", createLyric);
 
-// (선택) 상세 페이지
+// 상세 페이지
 router.get("/:id", showLyricDetail);
 
 module.exports = router;

@@ -5,12 +5,12 @@ const findCommentSchema = new mongoose.Schema(
   {
     post: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Find", // 어떤 Find 게시글에 달린 댓글인지
+      ref: "Find",
       required: true,
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User", // 어떤 유저가 썼는지
+      ref: "User",
       required: true,
     },
     content: {
@@ -20,7 +20,7 @@ const findCommentSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true, // createdAt, updatedAt
+    timestamps: true,
   }
 );
 

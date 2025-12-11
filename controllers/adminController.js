@@ -1,14 +1,13 @@
 // controllers/adminController.js
 const asyncHandler = require("express-async-handler");
 
-// 🔹 실제 사용하는 모델 이름/경로에 맞게 수정해 주세요.
-const FindPost = require("../models/find");   // 예: models/find.js 에서 module.exports = mongoose.model('FindPost', ...) 라면 이름 맞춰서
-const LyricPost = require("../models/lyric"); // 예: models/lyric.js
-const Chain = require("../models/chain");     // 이미 있는 체인 모델
+const FindPost = require("../models/find");
+const LyricPost = require("../models/lyric");
+const Chain = require("../models/chain");
 
 /**
  * GET /admin
- * 관리자 대시보드 (간단 요약 + 링크)
+ * 관리자 대시보드
  */
 const adminDashboard = asyncHandler(async (req, res) => {
   const [findCount, lyricCount, chainCount] = await Promise.all([
@@ -30,8 +29,8 @@ const adminDashboard = asyncHandler(async (req, res) => {
  */
 const adminFindList = asyncHandler(async (req, res) => {
   const posts = await FindPost.find({})
-    .populate("user", "username name")       // user 필드 ref가 있다면
-    .sort({ createdAt: -1 })                 // 최신 글 우선
+    .populate("user", "username name")
+    .sort({ createdAt: -1 })
     .lean();
 
   res.render("admin_find_list", { posts });

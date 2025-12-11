@@ -6,7 +6,7 @@ const lyricSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true, // 로그인 유저만 작성한다고 가정
+      required: true,
     },
     title: {
       type: String,

@@ -2,7 +2,6 @@
 
 <main class="find-page">
   <div class="find-layout">
-    <!-- 왼쪽 설명 -->
     <aside class="find-sidebar">
       <h2 class="find-title">Find Ground</h2>
       <p class="find-desc">
@@ -10,10 +9,8 @@
       </p>
     </aside>
 
-    <!-- 오른쪽: 상세 내용 -->
     <section class="find-main">
 
-      <!-- 제목 + 날짜 박스 -->
       <div class="find-detail-header">
         <div class="find-detail-title">
           <%= post.title %>
@@ -23,14 +20,12 @@
         </div>
       </div>
 
-      <!-- 본문 -->
       <div class="find-detail-body">
         <% bodyLines.forEach(function(line) { %>
           <p><%= line %></p>
         <% }) %>
       </div>
 
-      <!-- 첨부 파일 (있을 때만) -->
       <% if (post.filePath) { %>
         <div class="find-detail-file">
           <div class="find-file-box">
@@ -45,17 +40,14 @@
             </a>
           </div>
 
-          <!-- 오디오 재생 -->
           <audio class="find-audio" controls src="<%= post.filePath %>">
             브라우저가 오디오 태그를 지원하지 않습니다.
           </audio>
         </div>
       <% } %>
 
-            <!-- 구분선 -->
             <hr class="find-detail-divider" />
 
-            <!-- 댓글 영역 -->
             <section class="find-comments" id="comments">
               <% if (comments && comments.length) { %>
                 <div class="find-comment-list">
@@ -75,8 +67,7 @@
                   아직 댓글이 없습니다. 첫 번째 댓글을 남겨보세요.
                 </p>
               <% } %>
-      
-              <!-- 댓글 작성 -->
+
               <form
                 class="find-comment-form"
                 action="/find/<%= post._id %>/comments"

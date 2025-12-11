@@ -6,7 +6,7 @@ const findSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true, // 로그인 유저만 글 작성한다고 가정
+      required: true,
     },
     title: {
       type: String,
@@ -18,16 +18,15 @@ const findSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    // 음원 첨부 파일 (선택)
     filePath: {
-      type: String,      // 실제 서버 내 저장 경로 or URL
+      type: String,
     },
     fileOriginalName: {
-      type: String,      // 사용자가 업로드한 원래 파일명
+      type: String,
     },
   },
   {
-    timestamps: true, // createdAt, updatedAt 자동 생성
+    timestamps: true,
   }
 );
 

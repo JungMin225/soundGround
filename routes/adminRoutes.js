@@ -13,10 +13,9 @@ const {
   adminDeleteChain,
 } = require("../controllers/adminController");
 
-// 🔹 모든 /admin 하위는 관리자만
 router.use(requireAdmin);
 
-// 간단한 관리자 홈 (요약 + 링크)
+// 간단한 관리자 홈
 router.get("/", adminDashboard);
 
 // Find Ground 글 관리

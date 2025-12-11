@@ -5,7 +5,7 @@ const Chain = require("../models/chain");
 // GET /chain  : 체인 페이지
 exports.showChain = asyncHandler(async (req, res) => {
   const chains = await Chain.find({})
-    .sort({ createdAt: -1 }) // 🔁 최신 글이 위로 오도록 변경
+    .sort({ createdAt: -1 })
     .lean();
 
   const currentUserId = req.session.user ? String(req.session.user.id) : null;
@@ -20,7 +20,7 @@ exports.showChain = asyncHandler(async (req, res) => {
 
 // POST /chain : 새 가사 등록
 exports.postChain = asyncHandler(async (req, res) => {
-  // 로그인 안 되어 있으면 로그인 팝업 → 이동
+
   if (!req.session || !req.session.user) {
     return res.render("need_login");
   }
@@ -28,7 +28,7 @@ exports.postChain = asyncHandler(async (req, res) => {
   const { lyric, title, artist } = req.body;
 
   if (!lyric || !title || !artist) {
-    // 간단한 검증
+
     return res.status(400).send("가사, 제목, 가수를 모두 입력해 주세요.");
   }
 
@@ -39,7 +39,7 @@ exports.postChain = asyncHandler(async (req, res) => {
     artist,
   });
 
-  // 등록 후 다시 리스트 상단으로
+
   return res.redirect("/chain#chain-list");
 });
 

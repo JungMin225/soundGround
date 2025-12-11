@@ -16,7 +16,6 @@ body {
   height: 100%;
 }
 
-/* Theme vars */
 :root {
   --gap: 28px;
   --header-h: 64px;
@@ -31,7 +30,6 @@ body {
   --sg-card-border: rgba(255, 255, 255, 0.18);
 }
 
-/* Base body */
 body {
   min-height: 100vh;
   font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
@@ -44,14 +42,12 @@ a {
   text-decoration: none;
 }
 
-/* 공통 컨테이너 */
 .sg-container {
   width: 100%;
   margin: 0 auto;
   padding: 0 32px;
 }
 
-/* 테이블 */
 .table {
   color: white;
 }
@@ -67,7 +63,6 @@ header {
   background-color: var(--sg-header-bg);
 }
 
-/* 예전 .sg-header도 유지 (필요 시 사용) */
 .sg-header {
   width: 100%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -83,7 +78,6 @@ header .sg-container {
   height: 72px;
 }
 
-/* Left: brand */
 .sg-brand {
   display: inline-flex;
   align-items: center;
@@ -93,7 +87,6 @@ header .sg-container {
   text-decoration: none;
 }
 
-/* Right: nav */
 .sg-nav {
   display: flex;
   align-items: center;
@@ -129,7 +122,6 @@ header .sg-container {
   padding-bottom: 96px;
 }
 
-/* ---------- 히어로 영역 ---------- */
 
 .sg-hero {
   position: relative;
@@ -137,20 +129,19 @@ header .sg-container {
   margin-bottom: 80px;
 }
 
-/* 상단 큰 원형 배경을 이미지로 */
 .sg-hero::before {
   content: "";
   position: absolute;
-  top: -260px;          /* 위치는 이미지 보면서 조정 */
+  top: -260px;
   left: 25%;
   transform: translateX(-50%);
-  width: 1000px;         /* 이미지 실제 크기 or 적당한 값 */
+  width: 1000px;
   height: 1000px;
   background-image: url("/images/home-hero-bg.png");
   background-repeat: no-repeat;
-  background-size: contain;   /* 필요하면 cover 로 바꿔보기 */
+  background-size: contain;
   background-position: center;
-  z-index: -1;          /* 텍스트 뒤, 배경 앞 */
+  z-index: -1;
 }
 
 .sg-hero-inner {
@@ -169,14 +160,12 @@ header .sg-container {
   color: var(--sg-accent-blue);
 }
 
-/* “음악 놀이터” 같은 서브 텍스트 */
 .sg-hero-subtitle {
   margin: 0 0 16px;
   font-size: 16px;
   color: var(--sg-text-sub);
 }
 
-/* ---------- 웹사이트 소개 영역 ---------- */
 
 .sg-intro {
   margin-top: 40px;
@@ -198,7 +187,6 @@ header .sg-container {
   overflow: hidden;
 }
 
-/* 오른쪽 아래 네모 타일 이미지 */
 .sg-intro-card::after {
   content: "";
   position: absolute;
@@ -232,7 +220,6 @@ header .sg-container {
   margin-bottom: 0;
 }
 
-/* 왼쪽 파란 타이틀 pill */
 .sg-intro-tag {
   flex-shrink: 0;
   min-width: 180px;
@@ -245,14 +232,12 @@ header .sg-container {
   text-align: center;
 }
 
-/* 오른쪽 설명 텍스트 */
 .sg-intro-item p {
   font-size: 16px;
   line-height: 1.7;
   color: #f3f3ff;
 }
 
-/* 반응형 - HOME */
 @media (max-width: 900px) {
   .sg-intro-card {
     padding: 32px 24px 32px;
@@ -285,7 +270,7 @@ header .sg-container {
 }
 
 /* =========================================
-   CONTACT (예전 user-info 폼)
+  CONTACT
 ========================================= */
 
 #site-main {
@@ -351,7 +336,6 @@ header .sg-container {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0);
 }
 
-/* 버튼 (부트스트랩 .btn-primary 커스텀) */
 #add-user .btn.btn-primary {
   display: block;
   width: 100%;
@@ -364,7 +348,6 @@ header .sg-container {
   transition: transform 0.04s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
-/* 상단 우측 ‘회원 목록’ 버튼 영역 */
 .button-box {
   display: flex;
   justify-content: flex-end;
@@ -394,7 +377,7 @@ header .sg-container {
 }
 
 /* =========================================
-   PLAYLIST GRID (index)
+  PLAYLIST GRID (index)
 ========================================= */
 
 .pg-wrap{
@@ -603,8 +586,7 @@ header .sg-container {
 }
 
 /* =============================
-   PLAYLIST DETAIL
-   (프로필 카드 클릭 후 화면)
+  PLAYLIST DETAIL
 ============================= */
 
 .pl-page {
@@ -624,7 +606,6 @@ header .sg-container {
   column-gap: 64px;
 }
 
-/* 왼쪽 사이드 */
 .pl-sidebar {
   padding-right: 40px;
   border-right: 1px solid #2b2b2b;
@@ -642,7 +623,6 @@ header .sg-container {
   color: #a6a6a6;
 }
 
-/* 오른쪽 메인 */
 .pl-main {
   display: flex;
   flex-direction: column;
@@ -653,8 +633,6 @@ header .sg-container {
   font-size: 14px;
   color: #b3b3b3;
 }
-
-/* ----- CD 원형 ----- */
 
 .pl-disc {
   position: relative;
@@ -684,8 +662,6 @@ header .sg-container {
   font-weight: 700;
 }
 
-/* 리스트 */
-
 .pl-disc-tracks {
   list-style: none;
   padding: 0;
@@ -710,8 +686,6 @@ header .sg-container {
 .pl-disc-track.is-active {
   background: rgba(0, 0, 0, 0.06);
 }
-
-/* 번호, 제목, 버튼 */
 
 .pl-track-index {
   text-align: right;
@@ -747,8 +721,6 @@ header .sg-container {
   opacity: 0.3;
   cursor: default;
 }
-
-/* ----- 댓글 영역 ----- */
 
 .pl-comments-wrap {
   width: 100%;
@@ -788,7 +760,6 @@ header .sg-container {
   font-size: 13px;
 }
 
-/* 반응형 */
 @media (max-width: 960px) {
   .pl-layout {
     grid-template-columns: 1fr;
@@ -820,7 +791,7 @@ header .sg-container {
 
 
 /* =========================================
-   LOGIN PAGE
+  LOGIN PAGE
 ========================================= */
 
 .login-page {
@@ -842,13 +813,11 @@ header .sg-container {
   background: #ffffff;
 }
 
-/* 왼쪽 파란 영역 */
 .login-card-left {
   flex: 1.5;
   background: #2462ff;
 }
 
-/* 오른쪽 로그인 폼 영역 */
 .login-card-right {
   flex: 1;
   padding: 80px 96px;
@@ -866,14 +835,12 @@ header .sg-container {
   color: #000000;
 }
 
-/* 폼 전체 */
 .login-form {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-/* 라벨 + 인풋 */
 .login-form .form-group {
   display: flex;
   flex-direction: column;
@@ -900,7 +867,6 @@ header .sg-container {
   color: #c0c0c0;
 }
 
-/* 로그인 버튼 */
 .btn-login {
   margin-top: 24px;
   width: 100%;
@@ -918,7 +884,6 @@ header .sg-container {
   filter: brightness(1.05);
 }
 
-/* 회원가입 버튼 */
 .btn-signup {
   display: block;
   margin-top: 10px;
@@ -938,7 +903,6 @@ header .sg-container {
   background: #d8d8d8;
 }
 
-/* 반응형 - LOGIN */
 @media (max-width: 900px) {
   .login-card {
     height: auto;
@@ -959,7 +923,7 @@ header .sg-container {
 }
 
 /* ================================
-   TASTE GROUND (/taste)
+  TASTE GROUND
 ================================ */
 
 .taste-page {
@@ -969,7 +933,6 @@ header .sg-container {
   padding: 40px 80px;
 }
 
-/* 왼쪽 사이드 영역 */
 .taste-sidebar {
   padding-right: 40px;
   border-right: 1px solid #2b2b2b;
@@ -986,7 +949,6 @@ header .sg-container {
   color: #b3b3b3;
 }
 
-/* 오른쪽 폼 영역 */
 .taste-main {
   padding-right: 40px;
 }
@@ -997,20 +959,17 @@ header .sg-container {
   gap: 20px;
 }
 
-/* 기본 한 줄 */
 .taste-row {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-/* 인풋 라벨 */
 .taste-row label,
 .taste-row-label {
   font-size: 14px;
 }
 
-/* 텍스트 인풋 공통 */
 .taste-input {
   width: 100%;
   height: 40px;
@@ -1027,7 +986,6 @@ header .sg-container {
   color: #777777;
 }
 
-/* 음원 입력: 아이콘 + 인풋 가로 배치 */
 .taste-input-inline {
   display: flex;
   align-items: center;
@@ -1049,7 +1007,6 @@ header .sg-container {
   padding: 0;
 }
 
-/* 장르/언어 줄 */
 .taste-row-inline {
   flex-direction: row;
   align-items: flex-start;
@@ -1061,7 +1018,6 @@ header .sg-container {
   font-size: 14px;
 }
 
-/* 체크박스 옵션 영역 */
 .taste-options {
   display: flex;
   flex-wrap: wrap;
@@ -1082,14 +1038,12 @@ header .sg-container {
   accent-color: #2462ff;
 }
 
-/* 버튼 영역 */
 .taste-actions {
   display: flex;
   justify-content: flex-end;
   margin-top: 24px;
 }
 
-/* 게시하기 버튼 */
 .taste-submit {
   min-width: 140px;
   height: 44px;
@@ -1114,7 +1068,6 @@ header .sg-container {
   box-shadow: none;
 }
 
-/* 반응형 - TASTE */
 @media (max-width: 960px) {
   .taste-layout {
     max-width: 100%;
@@ -1134,7 +1087,7 @@ header .sg-container {
 }
 
 /* ================================
-   CHAIN GROUND (/chain)
+   CHAIN GROUND
 ================================ */
 
 .chain-page {
@@ -1144,7 +1097,6 @@ header .sg-container {
   padding: 40px 80px;
 }
 
-/* playlist / taste와 같은 2단 구조 */
 .chain-layout {
   width: 100%;
   display: grid;
@@ -1152,7 +1104,6 @@ header .sg-container {
   column-gap: 40px;
 }
 
-/* 왼쪽 사이드 */
 .chain-sidebar {
   padding-right: 40px;
   border-right: 1px solid #2b2b2b;
@@ -1169,8 +1120,6 @@ header .sg-container {
   color: #b3b3b3;
 }
 
-/* ----- 리스트 영역 ----- */
-
 .chain-list {
   display: flex;
   flex-direction: column;
@@ -1185,7 +1134,6 @@ header .sg-container {
   color: #b3b3b3;
 }
 
-/* Chain item 기본 레이아웃 + 액션 컬럼 */
 .chain-item {
   display: grid;
   grid-template-columns: 40px 2fr 1.2fr 1.2fr auto;
@@ -1230,14 +1178,11 @@ header .sg-container {
   gap: 6px;
 }
 
-/* 아래 구분선 */
 .chain-divider {
   border: none;
   border-top: 1px solid #3a3a3a;
   margin: 40px 0 28px;
 }
-
-/* ----- 입력 폼 ----- */
 
 .chain-form {
   display: flex;
@@ -1264,14 +1209,12 @@ header .sg-container {
   color: #777777;
 }
 
-/* 버튼 영역 */
 .chain-actions {
   display: flex;
   justify-content: center;
   margin-top: 24px;
 }
 
-/* 게시하기 버튼 */
 .chain-submit {
   min-width: 140px;
   height: 44px;
@@ -1296,7 +1239,6 @@ header .sg-container {
   box-shadow: none;
 }
 
-/* 보조: 목록으로 버튼 */
 .chain-cancel {
   display: inline-flex;
   align-items: center;
@@ -1319,8 +1261,6 @@ header .sg-container {
   color: #333333;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
-
-/* Chain 버튼 스타일 */
 
 .chain-btn {
   display: inline-flex;
@@ -1359,13 +1299,11 @@ header .sg-container {
   background-color: #ffd6d6;
 }
 
-/* 삭제 폼 */
 .chain-delete-form {
   display: inline-block;
   margin: 0;
 }
 
-/* 반응형 - CHAIN */
 @media (max-width: 960px) {
   .chain-layout {
     max-width: 100%;
@@ -1399,7 +1337,7 @@ header .sg-container {
 }
 
 /* ================================
-   FIND GROUND (/find)
+  FIND GROUND
 ================================ */
 
 .find-page {
@@ -1415,7 +1353,6 @@ header .sg-container {
   column-gap: 40px;
 }
 
-/* 왼쪽 사이드 */
 .find-sidebar {
   padding-right: 32px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
@@ -1432,13 +1369,11 @@ header .sg-container {
   color: #b3b3b3;
 }
 
-/* 오른쪽 메인 */
 .find-main {
   display: flex;
   flex-direction: column;
 }
 
-/* 게시글 리스트 */
 .find-list {
   display: flex;
   flex-direction: column;
@@ -1446,7 +1381,6 @@ header .sg-container {
   margin-bottom: 32px;
 }
 
-/* 목록 아이템 (링크) */
 .find-item {
   display: flex;
   justify-content: space-between;
@@ -1476,7 +1410,6 @@ header .sg-container {
   color: #bbb;
 }
 
-/* 페이지네이션 */
 .find-pagination {
   display: flex;
   justify-content: center;
@@ -1497,7 +1430,6 @@ header .sg-container {
   font-weight: 600;
 }
 
-/* 게시하기 버튼 */
 .find-submit-area {
   display: flex;
   justify-content: center;
@@ -1517,7 +1449,6 @@ header .sg-container {
   text-decoration: none;
 }
 
-/* 작성 폼 */
 .find-form {
   display: flex;
   flex-direction: column;
@@ -1561,12 +1492,10 @@ header .sg-container {
   background-color: #111;
 }
 
-/* 작성 폼 버튼 오른쪽 정렬 */
 .find-submit-area--right {
   justify-content: flex-end;
 }
 
-/* 상세 헤더 */
 .find-detail-header {
   display: flex;
   justify-content: space-between;
@@ -1586,7 +1515,6 @@ header .sg-container {
   color: #666;
 }
 
-/* 본문 */
 .find-detail-body {
   margin-bottom: 20px;
   font-size: 13px;
@@ -1598,7 +1526,6 @@ header .sg-container {
   margin: 0 0 4px;
 }
 
-/* 파일 박스 + 오디오 */
 .find-detail-file {
   margin-bottom: 28px;
 }
@@ -1630,14 +1557,12 @@ header .sg-container {
   width: 100%;
 }
 
-/* 구분선 */
 .find-detail-divider {
   border: none;
   border-top: 1px solid #444;
   margin: 24px 0;
 }
 
-/* 댓글 영역 공통 */
 .find-comments {
   margin-top: 8px;
 }
@@ -1671,7 +1596,6 @@ header .sg-container {
   margin-bottom: 16px;
 }
 
-/* 댓글 입력 */
 .find-comment-form {
   margin-top: 8px;
 }
@@ -1687,7 +1611,7 @@ header .sg-container {
 
 
 /* ================================
-   LYRIC GROUND (/lyric)
+  LYRIC GROUND
 ================================ */
 
 .lyric-page {
@@ -1702,7 +1626,6 @@ header .sg-container {
   column-gap: 40px;
 }
 
-/* 왼쪽 사이드 */
 .lyric-sidebar {
   padding-right: 32px;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
@@ -1719,7 +1642,6 @@ header .sg-container {
   color: #b3b3b3;
 }
 
-/* 오른쪽 메인 */
 .lyric-main {
   display: flex;
   flex-direction: column;
@@ -1730,8 +1652,6 @@ header .sg-container {
   font-size: 14px;
   color: #bbb;
 }
-
-/* 목록 + 아코디언 */
 
 .lyric-list {
   list-style: none;
@@ -1746,7 +1666,6 @@ header .sg-container {
   background-color: transparent;
 }
 
-/* 상단 흰 바 */
 .lyric-row {
   width: 100%;
   display: grid;
@@ -1774,10 +1693,9 @@ header .sg-container {
   text-align: right;
 }
 
-/* 펼쳐지는 본문 */
 .lyric-body {
   display: none;
-  padding: 18px 24px 24px 80px; /* 번호/제목보다 안쪽으로 */
+  padding: 18px 24px 24px 80px;
   background-color: #000;
   color: #f5f5f5;
   font-size: 13px;
@@ -1788,12 +1706,10 @@ header .sg-container {
   margin: 0 0 4px;
 }
 
-/* is-open 상태일 때만 보여주기 */
 .lyric-item.is-open .lyric-body {
   display: block;
 }
 
-/* 페이지네이션 < > */
 
 .lyric-pagination {
   display: flex;
@@ -1821,7 +1737,6 @@ header .sg-container {
   cursor: default;
 }
 
-/* 일기 작성 버튼 */
 
 .lyric-submit-area {
   display: flex;
@@ -1847,8 +1762,6 @@ header .sg-container {
   text-decoration: none;
   cursor: pointer;
 }
-
-/* 작성 폼 */
 
 .lyric-form {
   display: flex;
@@ -1888,7 +1801,6 @@ header .sg-container {
   resize: vertical;
 }
 
-/* 반응형 (선택) */
 @media (max-width: 960px) {
   .lyric-page {
     padding: 32px 20px;
@@ -1927,8 +1839,6 @@ header .sg-container {
   color: var(--sg-accent-blue);
 }
 
-
-/* 관리자 – 회원 리스트 페이지 공통 스타일 */
 .admin-users-page {
   min-height: calc(100vh - 72px);
   background: #050505;

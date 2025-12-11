@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema(
     },
     password2: { type: String, required: false, select: false },
 
-    // 🔹 관리자 여부
+
     isAdmin: {
       type: Boolean,
       default: false,

@@ -4,7 +4,7 @@ const Lyric = require("../models/lyric");
 
 const PAGE_SIZE = 5; // 한 페이지에 보여줄 일기 개수
 
-// GET /lyric : 목록 + 페이지네이션 (내 글만)
+// GET /lyric : 목록 + 페이지네이션
 exports.showLyricList = asyncHandler(async (req, res) => {
   const page = parseInt(req.query.page, 10) || 1;
   const limit = PAGE_SIZE;
@@ -75,7 +75,7 @@ exports.createLyric = asyncHandler(async (req, res) => {
   return res.redirect("/lyric");
 });
 
-// (선택) GET /lyric/:id : 상세 보기 – 본인 또는 관리자만
+// GET /lyric/:id : 상세 보기
 exports.showLyricDetail = asyncHandler(async (req, res) => {
   const loginUser = req.session.user;
   const { id } = req.params;

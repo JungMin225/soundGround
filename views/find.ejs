@@ -2,7 +2,6 @@
 
 <main class="find-page">
   <div class="find-layout">
-    <!-- 왼쪽 설명 영역 -->
     <aside class="find-sidebar">
       <h2 class="find-title">Find Ground</h2>
       <p class="find-desc">
@@ -10,7 +9,6 @@
       </p>
     </aside>
 
-    <!-- 오른쪽: 리스트 + 페이지네이션 + 버튼 -->
     <section class="find-main">
       <% if (!posts.length) { %>
         <p class="find-empty">
@@ -32,7 +30,6 @@
         
       <% } %>
 
-      <!-- 페이지네이션 -->
       <% if (totalPages && totalPages > 1) { %>
         <div class="find-pagination">
           <% for (let p = 1; p <= totalPages; p++) { %>
@@ -45,8 +42,6 @@
           <% } %>
         </div>
       <% } %>
-
-      <!-- 게시하기 버튼 (나중에 /find/new 같은 라우트로 연결 예정) -->
       <div class="find-submit-area">
         <a href="/find/new" class="find-submit-btn">게시하기</a>
       </div>

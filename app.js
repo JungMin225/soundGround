@@ -5,8 +5,8 @@ const session = require("express-session");
 const path = require("path");
 
 const app = express();
-const port = 3333;
-
+// const port = 3333;
+const port = process.env.PORT || 3000;
 
 
 // DB 연결
@@ -87,3 +87,5 @@ app.use("/lyric", require("./routes/lyricRoutes"));
 app.listen(port, () => {
   console.log(`${port}번 포트에서 서버 실행 중`);
 });
+
+

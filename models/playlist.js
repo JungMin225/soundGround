@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const trackSchema = new mongoose.Schema({
   title: { type: String, required: true },
   artist: { type: String, default: '' },
-  coverUrl: { type: String, default: '' }, // 곡 커버 or 출처
-  audioUrl: { type: String, default: '' }, // 🔹 업로드된 음원 파일 경로
+  coverUrl: { type: String, default: '' },
+  audioUrl: { type: String, default: '' },
 }, { _id: false });
 
 const playlistSchema = new mongoose.Schema({

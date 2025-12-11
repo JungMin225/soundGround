@@ -2,27 +2,24 @@
 
 <main class="pl-page">
   <div class="pl-layout">
-    <!-- 왼쪽: 설명 -->
     <aside class="pl-sidebar">
       <h2 class="pl-title">Playlist Ground</h2>
       <p class="pl-desc">다른 사람의 추천곡을 구경할 수 있는 공간</p>
     </aside>
 
-    <!-- 오른쪽: CD + 댓글 -->
     <section class="pl-main">
       <% if (!playlist || !playlist.tracks || !playlist.tracks.length) { %>
         <p class="pl-empty">
           아직 등록된 노래가 없습니다. TASTE에서 노래를 등록해 보세요!
         </p>
       <% } else { %>
-        <!-- CD 모양 -->
+
         <div class="pl-disc">
           <div class="pl-disc-head">
             <div class="pl-disc-owner"><%= user.username %>의</div>
             <div class="pl-disc-label">PLAYLIST</div>
           </div>
 
-          <!-- 트랙 리스트 -->
           <ol class="pl-disc-tracks">
             <% playlist.tracks.forEach(function (track, index) { %>
               <li
@@ -58,10 +55,8 @@
           </ol>
         </div>
 
-        <!-- 실제 재생용 오디오 태그 (숨김) -->
         <audio id="pl-audio" preload="none"></audio>
 
-        <!-- 아래 댓글 영역 (UI만, 나중에 DB 연동 가능) -->
         <div class="pl-comments-wrap">
           <hr class="pl-divider" />
 
@@ -69,8 +64,6 @@
             <span class="pl-comment-col">닉네임</span>
             <span class="pl-comment-col">왜 이 노래 뭐임?</span>
           </div>
-
-          <!-- TODO: 댓글 리스트 -->
 
           <form class="pl-comment-form" action="#" method="POST">
             <input
@@ -108,7 +101,6 @@
       }
 
       btn.addEventListener("click", function () {
-        // 같은 버튼 다시 클릭 → 일시정지
         if (currentBtn === btn && !audio.paused) {
           audio.pause();
           btn.classList.remove("is-playing");
@@ -116,7 +108,6 @@
           return;
         }
 
-        // 기존 활성화된 행/버튼 초기화
         document
           .querySelectorAll(".pl-disc-track.is-active")
           .forEach(function (r) {
@@ -129,12 +120,10 @@
             b.classList.remove("is-playing");
           });
 
-        // 현재 행/버튼 활성화
         row.classList.add("is-active");
         btn.classList.add("is-playing");
         currentBtn = btn;
 
-        // 오디오 src 설정 후 재생
         audio.src = src;
         audio.play();
       });

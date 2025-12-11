@@ -48,7 +48,6 @@ exports.showFind = asyncHandler(async (req, res) => {
 // GET /find/new : 새 글 작성 폼
 exports.showNewFind = asyncHandler(async (req, res) => {
   if (!req.session || !req.session.user) {
-    // 체인에서 쓰던 로그인 팝업 재사용
     return res.render("need_login");
   }
 
@@ -67,7 +66,6 @@ exports.createFind = asyncHandler(async (req, res) => {
   const { title, body } = req.body;
 
   if (!title || !body) {
-    // 간단한 검증
     return res.status(400).send("제목과 내용을 모두 입력해 주세요.");
   }
 
@@ -75,8 +73,7 @@ exports.createFind = asyncHandler(async (req, res) => {
   let fileOriginalName;
 
   if (req.file) {
-    // multer가 저장한 파일 정보
-    filePath = `/uploads/find/${req.file.filename}`; // 나중에 <audio src>로 사용
+    filePath = `/uploads/find/${req.file.filename}`;
     fileOriginalName = req.file.originalname;
   }
 
