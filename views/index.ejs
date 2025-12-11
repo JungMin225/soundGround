@@ -1,0 +1,43 @@
+
+<%- include("./include/_header") %>
+  <!-- Main -->
+  <main id="site-main" class="admin-users-page">
+    <div class="button-box"> 
+      <a href="/users/add" class="btn btn-light">
+        <i class="fa-solid fa-user-plus"></i>연락처 추가</a>
+    </div>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>메일 주소</th>
+          <th>아이디</th>
+          <th>비밀번호</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach (user => { %>
+          
+        <tr>
+          <td><%= user.name %> </td>
+          <td><%= user.email %></td>
+          <td><%= user.username %></td>
+          <td><%= user.password %></td>
+          <td><%= user.password2 %></td>
+          <td>
+            <a href="/users/<%= user._id %>" class="btn update" title="수정">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+              <form action="/users/<%= user._id %>?_method=DELETE" method="POST" style="display:inline">
+              <input type="submit" class="btn delete" title="삭제" value="X" >
+            </form>
+          </td>
+        </tr>
+        <%}); %>
+      </tbody>
+    </table>
+  </main>
+  <!-- /Main -->
+
+  <%- include("./include/_footer") %>

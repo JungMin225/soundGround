@@ -1,0 +1,155 @@
+<%- include('./include/_header') %>
+
+<main class="pl-page">
+  <div class="pl-layout">
+    <!-- 왼쪽: 설명 -->
+    <aside class="pl-sidebar">
+      <h2 class="pl-title">Playlist Ground</h2>
+      <p class="pl-desc">다른 사람의 추천곡을 구경할 수 있는 공간</p>
+    </aside>
+
+    <!-- 오른쪽: CD + 댓글 -->
+    <section class="pl-main">
+      <% if (!playlist || !playlist.tracks || !playlist.tracks.length) { %>
+        <p class="pl-empty">
+          아직 등록된 노래가 없습니다. TASTE에서 노래를 등록해 보세요!
+        </p>
+      <% } else { %>
+        <!-- CD 모양 -->
+        <div class="pl-disc">
+          <div class="pl-disc-head">
+            <div class="pl-disc-owner"><%= user.username %>의</div>
+            <div class="pl-disc-label">PLAYLIST</div>
+          </div>
+
+          <!-- 트랙 리스트 -->
+          <ol class="pl-disc-tracks">
+            <% playlist.tracks.forEach(function (track, index) { %>
+              <li
+                class="pl-disc-track"
+                data-audio="<%= track.audioUrl || '' %>"
+              >
+                <span class="pl-track-index"><%= index + 1 %>.</span>
+                <span class="pl-track-title">
+                  <%= track.title %>
+                  <% if (track.artist) { %> – <%= track.artist %><% } %>
+                </span>
+
+                <% if (track.audioUrl) { %>
+                  <button
+                    type="button"
+                    class="pl-track-play-btn"
+                    aria-label="재생"
+                  >
+                    ▶
+                  </button>
+                <% } else { %>
+                  <button
+                    type="button"
+                    class="pl-track-play-btn pl-track-play-btn--disabled"
+                    disabled
+                    title="음원 정보가 없습니다."
+                  >
+                    ▶
+                  </button>
+                <% } %>
+              </li>
+            <% }); %>
+          </ol>
+        </div>
+
+        <!-- 실제 재생용 오디오 태그 (숨김) -->
+        <audio id="pl-audio" preload="none"></audio>
+
+        <!-- 아래 댓글 영역 (UI만, 나중에 DB 연동 가능) -->
+        <div class="pl-comments-wrap">
+          <hr class="pl-divider" />
+
+          <div class="pl-comment-header">
+            <span class="pl-comment-col">닉네임</span>
+            <span class="pl-comment-col">왜 이 노래 뭐임?</span>
+          </div>
+
+          <!-- TODO: 댓글 리스트 -->
+
+          <form class="pl-comment-form" action="#" method="POST">
+            <input
+              type="text"
+              name="comment"
+              class="pl-comment-input"
+              placeholder="댓글 작성"
+            />
+          </form>
+        </div>
+      <% } %>
+    </section>
+  </div>
+</main>
+
+<%- include('./include/_footer') %>
+
+<script>
+  (function () {
+    var audio = document.getElementById("pl-audio");
+    if (!audio) return;
+
+    var rows = document.querySelectorAll(".pl-disc-track");
+    var currentBtn = null;
+
+    rows.forEach(function (row) {
+      var btn = row.querySelector(".pl-track-play-btn");
+      if (!btn || btn.disabled) return;
+
+      var src = row.getAttribute("data-audio");
+      if (!src) {
+        btn.disabled = true;
+        btn.classList.add("pl-track-play-btn--disabled");
+        return;
+      }
+
+      btn.addEventListener("click", function () {
+        // 같은 버튼 다시 클릭 → 일시정지
+        if (currentBtn === btn && !audio.paused) {
+          audio.pause();
+          btn.classList.remove("is-playing");
+          row.classList.remove("is-active");
+          return;
+        }
+
+        // 기존 활성화된 행/버튼 초기화
+        document
+          .querySelectorAll(".pl-disc-track.is-active")
+          .forEach(function (r) {
+            r.classList.remove("is-active");
+          });
+
+        document
+          .querySelectorAll(".pl-track-play-btn.is-playing")
+          .forEach(function (b) {
+            b.classList.remove("is-playing");
+          });
+
+        // 현재 행/버튼 활성화
+        row.classList.add("is-active");
+        btn.classList.add("is-playing");
+        currentBtn = btn;
+
+        // 오디오 src 설정 후 재생
+        audio.src = src;
+        audio.play();
+      });
+    });
+
+    audio.addEventListener("ended", function () {
+      if (currentBtn) {
+        currentBtn.classList.remove("is-playing");
+      }
+      document
+        .querySelectorAll(".pl-disc-track.is-active")
+        .forEach(function (r) {
+          r.classList.remove("is-active");
+        });
+      currentBtn = null;
+    });
+  })();
+</script>

@@ -1,0 +1,27 @@
+<%- include('./include/_header') %>
+
+<main class="admin-page">
+  <div class="sg-container">
+    <h1>Admin Dashboard</h1>
+    <p>관리자 전용 요약 페이지입니다.</p>
+
+    <ul>
+      <li>Find Ground 게시글 수: <%= findCount %></li>
+      <li>Lyric Ground 게시글 수: <%= lyricCount %></li>
+      <li>Chain Ground 가사 수: <%= chainCount %></li>
+    </ul>
+
+    <hr />
+
+    <nav>
+      <ul>
+        <li><a href="/admin/find">Find Ground 관리</a></li>
+        <li><a href="/admin/lyric">Lyric Ground 관리</a></li>
+        <li><a href="/admin/chain">Chain Ground 관리</a></li>
+        <li><a href="/users">회원 관리</a></li>
+      </ul>
+    </nav>
+  </div>
+</main>
+
+<%- include('./include/_footer') %>

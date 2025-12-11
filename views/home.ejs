@@ -1,0 +1,73 @@
+<!-- views/home.ejs -->
+<%- include('./include/_header') %>
+
+<main class="sg-home">
+  <!-- 상단 히어로 영역 -->
+  <section class="sg-hero">
+    <div class="sg-hero-inner">
+      <% if (user) { %>
+        <p class="sg-hero-subtitle">
+          안녕하세요 <%= user.name %>님!
+        </p>
+      <% } else { %>
+        <p class="sg-hero-subtitle">
+          음악 놀이터
+        </p>
+      <% } %>
+  
+      <h1 class="sg-hero-title">
+        SOUND GROUND에서 놀자!
+      </h1>
+    </div>
+  </section>
+  
+  <section class="sg-intro">
+    <div class="sg-intro-card">
+      <h2 class="sg-intro-title">웹사이트 소개</h2>
+
+      <div class="sg-intro-item">
+        <h3 class="sg-intro-tag">PLAYLIST GROUND</h3>
+        <p>
+          다른 사람의 추천곡을 구경할 수 있는 공간<br />
+          게시글마다 댓글을 남길 수 있어 자연스럽게 다양한 음악을 발견하고 취향을 공유하는 즐거움을 느낄 수 있습니다.
+        </p>
+      </div>
+
+      <div class="sg-intro-item">
+        <h3 class="sg-intro-tag">TASTE GROUND</h3>
+        <p>
+          사용자가 좋아하는 장르, 언어, 분위기 등을 선택해 노래 추천 글을 작성하는 공간<br />
+          각 분야별 노래를 탐색해서 취향을 찾을 수 있습니다.
+        </p>
+      </div>
+
+      <div class="sg-intro-item">
+        <h3 class="sg-intro-tag">CHAIN GROUND</h3>
+        <p>
+          가사를 끝말잇기처럼 이어가는 공간<br />
+          앞 사람이 남긴 가사의 마지막 단어로 새로운 가사를 이어 쓰며,
+          자연스럽게 다른 노래를 탐험하게 되는 공간입니다.
+        </p>
+      </div>
+
+      <div class="sg-intro-item">
+        <h3 class="sg-intro-tag">FIND GROUND</h3>
+        <p>
+          기억이 희미한 노래를 가사 일부만으로 찾아볼 수 있는 공간<br />
+          노래의 키워드나 문장을 입력하면 비슷한 가사를 가진 노래를 찾아주는 공간입니다.
+        </p>
+      </div>
+
+      <div class="sg-intro-item">
+        <h3 class="sg-intro-tag">LYRIC GROUND</h3>
+        <p>
+          자신의 경험을 가사 형태로 기록하는 공간<br />
+          오늘의 기분, 추억, 특정 노래에 얽힌 인상 등 자유롭게 감정을 가사로 표현하며,
+          음악으로 자신을 기록하는 창작 공간입니다.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('./include/_footer') %>

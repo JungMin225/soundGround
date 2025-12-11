@@ -1,0 +1,60 @@
+<%- include('./include/_header') %>
+
+<main class="chain-page">
+  <div class="chain-layout">
+    <!-- 왼쪽 설명 -->
+    <aside class="chain-sidebar">
+      <h2 class="chain-title">Chain Ground</h2>
+      <p class="chain-desc">
+        가사 수정하기
+      </p>
+    </aside>
+
+    <!-- 오른쪽: 수정 폼 -->
+    <section class="chain-main">
+      <form
+        action="/chain/<%= chain._id %>?_method=PUT"
+        method="POST"
+        class="chain-form"
+      >
+        <div class="chain-row">
+          <input
+            type="text"
+            name="lyric"
+            class="chain-input"
+            placeholder="가사 작성"
+            value="<%= chain.lyric %>"
+            required
+          />
+        </div>
+        <div class="chain-row">
+          <input
+            type="text"
+            name="title"
+            class="chain-input"
+            placeholder="제목 작성"
+            value="<%= chain.title %>"
+            required
+          />
+        </div>
+        <div class="chain-row">
+          <input
+            type="text"
+            name="artist"
+            class="chain-input"
+            placeholder="가수 작성"
+            value="<%= chain.artist %>"
+            required
+          />
+        </div>
+
+        <div class="chain-actions">
+          <button type="submit" class="chain-submit">수정하기</button>
+          <a href="/chain#chain-list" class="chain-cancel">목록으로</a>
+        </div>        
+      </form>
+    </section>
+  </div>
+</main>
+
+<%- include('./include/_footer') %>

@@ -1,0 +1,34 @@
+<!-- views/playlist_index.ejs -->
+<%- include('./include/_header') %>
+
+<main class="pg-wrap">
+  <aside class="pg-aside">
+    <h2>Playlist Ground</h2>
+    <p>다른 사람의 추천곡을 구경할 수 있는 공간</p>
+  </aside>
+
+  <section class="pg-grid">
+    <% users.forEach(u => { %>
+      <a
+        class="pg-card"
+        href="/playlist/<%= u.username %>"
+        title="<%= u.username %>"
+      >
+        <div class="pg-avatar">
+          <% if (u.avatarUrl) { %>
+            <img
+              src="<%= u.avatarUrl %>"
+              alt="<%= u.username %>의 아바타"
+            >
+          <% } else { %>
+            <span class="pg-initial"><%= u.initial %></span>
+          <% } %>
+        </div>
+
+        <div class="pg-name"><%= u.username %></div>
+      </a>
+    <% }) %>
+  </section>
+</main>
+
+<%- include('./include/_footer') %>

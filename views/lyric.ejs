@@ -1,0 +1,92 @@
+<%- include('./include/_header') %>
+
+<main class="lyric-page">
+  <div class="lyric-layout">
+    <!-- 왼쪽 사이드 -->
+    <aside class="lyric-sidebar">
+      <h2 class="lyric-title">Lyric Ground</h2>
+      <p class="lyric-desc">
+        자신의 경험을 가사 형태로 기록하는 공간
+      </p>
+    </aside>
+
+    <!-- 오른쪽 메인 -->
+    <section class="lyric-main">
+      <% if (!lyrics.length) { %>
+        <p class="lyric-empty">
+          아직 작성된 가사 일기가 없습니다. 첫 번째 일기를 남겨보세요!
+        </p>
+      <% } else { %>
+        <ul class="lyric-list">
+          <% lyrics.forEach(function(item) { %>
+            <li class="lyric-item">
+              <!-- 제목 줄 -->
+              <button
+                type="button"
+                class="lyric-row"
+                data-lyric-id="<%= item._id %>"
+              >
+                <span class="lyric-no"><%= item.index %></span>
+                <span class="lyric-row-title"><%= item.title %></span>
+                <span class="lyric-row-date"><%= item.formattedDate %></span>
+              </button>
+
+              <!-- 펼쳐지는 본문 -->
+              <div class="lyric-body">
+                <% item.bodyLines.forEach(function(line) { %>
+                  <p><%= line %></p>
+                <% }) %>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      <% } %>
+
+      <!-- 페이지네이션: < > -->
+      <% if (totalPages && totalPages > 1) { %>
+        <div class="lyric-pagination">
+          <% if (hasPrev) { %>
+            <a
+              href="/lyric?page=<%= currentPage - 1 %>"
+              class="lyric-page-arrow"
+            >&lt;</a>
+          <% } else { %>
+            <span class="lyric-page-arrow lyric-page-arrow--disabled">&lt;</span>
+          <% } %>
+
+          <% if (hasNext) { %>
+            <a
+              href="/lyric?page=<%= currentPage + 1 %>"
+              class="lyric-page-arrow"
+            >&gt;</a>
+          <% } else { %>
+            <span class="lyric-page-arrow lyric-page-arrow--disabled">&gt;</span>
+          <% } %>
+        </div>
+      <% } %>
+
+      <!-- 일기 작성하기 버튼 -->
+      <div class="lyric-submit-area">
+        <a href="/lyric/new" class="lyric-submit-btn">일기 작성하기</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+  // 제목 클릭 시 해당 본문 토글 (여러 개 펼쳐져도 OK)
+  document.addEventListener("DOMContentLoaded", function () {
+    const rows = document.querySelectorAll(".lyric-row");
+
+    rows.forEach(function (row) {
+      row.addEventListener("click", function () {
+        const item = row.closest(".lyric-item");
+        if (!item) return;
+
+        item.classList.toggle("is-open");
+      });
+    });
+  });
+</script>
+
+<%- include('./include/_footer') %>

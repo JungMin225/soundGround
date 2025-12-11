@@ -1,0 +1,96 @@
+<%- include('./include/_header') %>
+
+<main class="chain-page">
+  <div class="chain-layout">
+    <!-- 왼쪽 설명 -->
+    <aside class="chain-sidebar">
+      <h2 class="chain-title">Chain Ground</h2>
+      <p class="chain-desc">
+        가사로 끝말잇기를 즐기는 공간
+      </p>
+    </aside>
+
+    <!-- 오른쪽: 리스트 + 폼 -->
+    <section class="chain-main">
+            <!-- 가사 리스트 -->
+            <div id="chain-list" class="chain-list">
+              <% if (!chains.length) { %>
+                <p class="chain-empty">
+                  아직 등록된 가사가 없습니다. 첫 번째 글을 남겨보세요!
+                </p>
+              <% } else { %>
+                <% chains.forEach(function(c, index) { %>
+                  <article class="chain-item">
+                    <div class="chain-col chain-col-no"><%= index + 1 %></div>
+                    <div class="chain-col chain-col-lyric"><%= c.lyric %></div>
+                    <div class="chain-col chain-col-title"><%= c.title %></div>
+                    <div class="chain-col chain-col-artist"><%= c.artist %></div>
+      
+                    <div class="chain-col chain-col-actions">
+                      <% if (currentUserId && String(c.user) === currentUserId) { %>
+                        <a
+                          href="/chain/<%= c._id %>/edit"
+                          class="chain-btn chain-btn-edit"
+                        >
+                          수정
+                        </a>
+      
+                        <form
+                          action="/chain/<%= c._id %>?_method=DELETE"
+                          method="POST"
+                          class="chain-delete-form"
+                        >
+                          <button type="submit" class="chain-btn chain-btn-delete">
+                            삭제
+                          </button>
+                        </form>
+                      <% } %>
+                    </div>
+                  </article>
+                <% }) %>
+              <% } %>
+            </div>
+      
+
+      <!-- 구분선 -->
+      <hr class="chain-divider" />
+
+      <!-- 입력 폼 -->
+      <form action="/chain" method="POST" class="chain-form">
+        <div class="chain-row">
+          <input
+            type="text"
+            name="lyric"
+            class="chain-input"
+            placeholder="가사 작성"
+            required
+          />
+        </div>
+        <div class="chain-row">
+          <input
+            type="text"
+            name="title"
+            class="chain-input"
+            placeholder="제목 작성"
+            required
+          />
+        </div>
+        <div class="chain-row">
+          <input
+            type="text"
+            name="artist"
+            class="chain-input"
+            placeholder="가수 작성"
+            required
+          />
+        </div>
+
+        <div class="chain-actions">
+          <button type="submit" class="chain-submit">게시하기</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<%- include('./include/_footer') %>

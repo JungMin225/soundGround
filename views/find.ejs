@@ -1,0 +1,57 @@
+<%- include('./include/_header') %>
+
+<main class="find-page">
+  <div class="find-layout">
+    <!-- 왼쪽 설명 영역 -->
+    <aside class="find-sidebar">
+      <h2 class="find-title">Find Ground</h2>
+      <p class="find-desc">
+        기억 속 희미한 노래를 찾을 수 있는 공간
+      </p>
+    </aside>
+
+    <!-- 오른쪽: 리스트 + 페이지네이션 + 버튼 -->
+    <section class="find-main">
+      <% if (!posts.length) { %>
+        <p class="find-empty">
+          아직 등록된 질문이 없습니다. 첫 번째 글을 남겨보세요!
+        </p>
+      <% } else { %>
+        <div class="find-list">
+          <% posts.forEach(function(post) { %>
+            <a href="/find/<%= post._id %>" class="find-item">
+              <div class="find-item-title">
+                <%= post.title %>
+              </div>
+              <div class="find-item-date">
+                <%= post.formattedDate %>
+              </div>
+            </a>
+          <% }) %>
+        </div>
+        
+      <% } %>
+
+      <!-- 페이지네이션 -->
+      <% if (totalPages && totalPages > 1) { %>
+        <div class="find-pagination">
+          <% for (let p = 1; p <= totalPages; p++) { %>
+            <a
+              href="/find?page=<%= p %>"
+              class="find-page-number <%= p === currentPage ? 'is-active' : '' %>"
+            >
+              <%= p %>
+            </a>
+          <% } %>
+        </div>
+      <% } %>
+
+      <!-- 게시하기 버튼 (나중에 /find/new 같은 라우트로 연결 예정) -->
+      <div class="find-submit-area">
+        <a href="/find/new" class="find-submit-btn">게시하기</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<%- include('./include/_footer') %>

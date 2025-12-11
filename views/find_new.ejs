@@ -1,0 +1,66 @@
+<%- include('./include/_header') %>
+
+<main class="find-page">
+  <div class="find-layout">
+    <!-- 왼쪽 설명 영역 -->
+    <aside class="find-sidebar">
+      <h2 class="find-title">Find Ground</h2>
+      <p class="find-desc">
+        기억 속 희미한 노래를 찾을 수 있는 공간
+      </p>
+    </aside>
+
+    <!-- 오른쪽: 새 글 작성 폼 -->
+    <section class="find-main">
+      <form
+        action="/find"
+        method="POST"
+        enctype="multipart/form-data"
+        class="find-form"
+      >
+        <!-- 제목 -->
+        <div class="find-form-row">
+          <label for="title" class="find-form-label">제목 입력</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="find-input find-input-title"
+            required
+          />
+        </div>
+
+        <!-- 내용 -->
+        <div class="find-form-row">
+          <label for="body" class="find-form-label">내용 입력</label>
+          <textarea
+            id="body"
+            name="body"
+            class="find-input find-input-body"
+            rows="10"
+            required
+          ></textarea>
+        </div>
+
+        <!-- 음원 파일 -->
+        <div class="find-form-row">
+          <label for="audio" class="find-form-label">음원</label>
+          <input
+            type="file"
+            id="audio"
+            name="audio"
+            class="find-input find-input-file"
+            accept="audio/*"
+          />
+        </div>
+
+        <!-- 버튼 영역 -->
+        <div class="find-submit-area find-submit-area--right">
+          <button type="submit" class="find-submit-btn">게시하기</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<%- include('./include/_footer') %>

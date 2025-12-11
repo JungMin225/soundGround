@@ -1,0 +1,98 @@
+<%- include('./include/_header') %>
+
+<main class="find-page">
+  <div class="find-layout">
+    <!-- 왼쪽 설명 -->
+    <aside class="find-sidebar">
+      <h2 class="find-title">Find Ground</h2>
+      <p class="find-desc">
+        기억 속 희미한 노래를 찾을 수 있는 공간
+      </p>
+    </aside>
+
+    <!-- 오른쪽: 상세 내용 -->
+    <section class="find-main">
+
+      <!-- 제목 + 날짜 박스 -->
+      <div class="find-detail-header">
+        <div class="find-detail-title">
+          <%= post.title %>
+        </div>
+        <div class="find-detail-date">
+          <%= formattedDate %>
+        </div>
+      </div>
+
+      <!-- 본문 -->
+      <div class="find-detail-body">
+        <% bodyLines.forEach(function(line) { %>
+          <p><%= line %></p>
+        <% }) %>
+      </div>
+
+      <!-- 첨부 파일 (있을 때만) -->
+      <% if (post.filePath) { %>
+        <div class="find-detail-file">
+          <div class="find-file-box">
+            <span class="find-file-icon">@</span>
+            <a
+              href="<%= post.filePath %>"
+              class="find-file-name"
+              target="_blank"
+              rel="noopener"
+            >
+              <%= post.fileOriginalName || '첨부 음원 파일' %>
+            </a>
+          </div>
+
+          <!-- 오디오 재생 -->
+          <audio class="find-audio" controls src="<%= post.filePath %>">
+            브라우저가 오디오 태그를 지원하지 않습니다.
+          </audio>
+        </div>
+      <% } %>
+
+            <!-- 구분선 -->
+            <hr class="find-detail-divider" />
+
+            <!-- 댓글 영역 -->
+            <section class="find-comments" id="comments">
+              <% if (comments && comments.length) { %>
+                <div class="find-comment-list">
+                  <% comments.forEach(function(c) { %>
+                    <div class="find-comment-item">
+                      <div class="find-comment-name">
+                        <%= c.authorName %>
+                      </div>
+                      <div class="find-comment-content">
+                        <%= c.content %>
+                      </div>
+                    </div>
+                  <% }) %>
+                </div>
+              <% } else { %>
+                <p class="find-comment-empty">
+                  아직 댓글이 없습니다. 첫 번째 댓글을 남겨보세요.
+                </p>
+              <% } %>
+      
+              <!-- 댓글 작성 -->
+              <form
+                class="find-comment-form"
+                action="/find/<%= post._id %>/comments"
+                method="POST"
+              >
+                <input
+                  type="text"
+                  name="content"
+                  class="find-input-comment"
+                  placeholder="댓글 작성"
+                  required
+                />
+              </form>
+            </section>
+      
+  </div>
+</main>
+
+<%- include('./include/_footer') %>

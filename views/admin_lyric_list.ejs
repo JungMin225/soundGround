@@ -1,0 +1,45 @@
+<%- include('./include/_header') %>
+
+<main class="admin-page">
+  <div class="sg-container">
+    <h1>Lyric Ground 관리</h1>
+    <p>가사 일기 게시글을 확인하고 삭제할 수 있습니다.</p>
+
+    <% if (!posts.length) { %>
+      <p>등록된 게시글이 없습니다.</p>
+    <% } else { %>
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>관리</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% posts.forEach(p => { %>
+            <tr>
+              <td><%= p.title %></td>
+              <td><%= p.user ? (p.user.username || p.user.name) : '알 수 없음' %></td>
+              <td><%= p.createdAt.toLocaleString('ko-KR') %></td>
+              <td>
+                <form
+                  action="/admin/lyric/<%= p._id %>?_method=DELETE"
+                  method="POST"
+                  onsubmit="return confirm('정말 이 글을 삭제하시겠습니까?');"
+                >
+                  <button type="submit" class="btn btn-sm btn-danger">삭제</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+
+    <a href="/admin" class="btn btn-secondary mt-3">관리자 홈으로</a>
+  </div>
+</main>
+
+<%- include('./include/_footer') %>

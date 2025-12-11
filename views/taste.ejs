@@ -1,0 +1,65 @@
+<%- include('./include/_header') %>
+
+<main class="taste-page">
+  <div class="taste-layout">
+    <!-- 왼쪽 설명 -->
+    <aside class="taste-sidebar">
+      <h2 class="taste-title">Taste Ground</h2>
+      <p class="taste-desc">
+        좋아하는 장르, 언어 등을 선택하여<br />
+        노래를 추천하는 공간
+      </p>
+    </aside>
+
+    <!-- 오른쪽 폼 -->
+    <section class="taste-main">
+      <!-- 🔹 딱 하나의 form만 사용 + multipart 설정 -->
+      <form
+        action="/taste"
+        method="POST"
+        class="taste-form"
+        enctype="multipart/form-data"
+      >
+        <div class="taste-row">
+          <label for="title">제목 입력</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            class="taste-input"
+            required
+          />
+        </div>
+
+        <div class="taste-row">
+          <label for="artist">가수 입력</label>
+          <input
+            type="text"
+            id="artist"
+            name="artist"
+            class="taste-input"
+          />
+        </div>
+
+        <div class="taste-row">
+          <label for="audio">음원 파일</label>
+          <input
+            type="file"
+            id="audio"
+            name="audio"
+            accept="audio/*"
+            class="taste-input"
+          />
+        </div>
+
+        <!-- 필요하면 나중에 장르/언어 체크박스들 여기 추가 -->
+
+        <div class="taste-actions">
+          <button type="submit" class="taste-submit">게시하기</button>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<%- include('./include/_footer') %>

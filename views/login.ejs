@@ -1,0 +1,51 @@
+<!-- views/login.ejs -->
+<%- include('./include/_header') %>
+
+<main class="login-page">
+  <section class="login-card">
+    <!-- 왼쪽 파란 영역 -->
+    <div class="login-card-left"></div>
+
+    <!-- 오른쪽 로그인 폼 영역 -->
+    <div class="login-card-right">
+      <h1 class="login-title">WELCOME!</h1>
+
+      <form action="/login" method="POST" class="login-form">
+        <div class="form-group">
+          <label for="username">아이디</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="form-control"
+            placeholder="ENTER YOUR ID"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">비밀번호</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="ENTER YOUR PASSWORD"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn-login">
+          로그인
+        </button>
+      </form>
+
+      <!-- 회원가입 버튼: add.ejs 로 이동 -->
+      <a href="/register" class="btn-signup">
+        회원가입
+      </a>
+    </div>
+  </section>
+</main>
+
+<%- include('./include/_footer') %>

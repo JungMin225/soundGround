@@ -1,0 +1,68 @@
+<!-- include header -->
+<%- include('./include/_header') %>
+<!-- include header -->
+
+<main id="site-main">
+  <div class="button-box">
+    <a href="/users" class="btn btn-light">
+      <i class="fa-solid fa-list"></i> 회원 목록
+    </a>
+  </div>
+
+  <h2>회원 정보 수정</h2>
+  <p>회원 정보를 수정합니다. (비밀번호는 입력한 경우에만 변경됩니다)</p>
+
+  <form action="/users/<%= user._id %>?_method=PUT" method="POST" id="edit-user">
+    <div class="user-info">
+      <!-- 기본 정보 -->
+      <div class="col-12">
+        <label for="name" class="col-form-label">이름</label>
+        <div>
+          <input type="text" class="form-control" name="name" id="name"
+                 value="<%= user.name %>" required>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="email" class="col-form-label">이메일</label>
+        <div>
+          <input type="email" class="form-control" name="email" id="email"
+                 value="<%= user.email %>" required>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="username" class="col-form-label">아이디</label>
+        <div>
+          <input type="text" class="form-control" name="username" id="username"
+                 value="<%= user.username %>" minlength="2" maxlength="20" required>
+        </div>
+      </div>
+
+      <!-- 비밀번호 변경 (선택 입력) -->
+      <hr style="border:none;border-top:1px solid #eee;margin:18px 0;">
+      <div class="col-12">
+        <label for="password" class="col-form-label">새 비밀번호 (선택)</label>
+        <div>
+          <input type="password" class="form-control" name="password" id="password"
+                 placeholder="새 비밀번호를 입력(미입력 시 변경 없음)">
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="password2" class="col-form-label">비밀번호 확인</label>
+        <div>
+          <input type="password" class="form-control" name="password2" id="password2"
+                 placeholder="새 비밀번호를 다시 입력">
+        </div>
+        <small style="color:#888;">두 칸 모두 비워두면 기존 비밀번호가 유지됩니다.</small>
+      </div>
+
+      <button type="submit">수정하기</button>
+    </div>
+  </form>
+</main>
+
+<!-- include footer -->
+<%- include('./include/_footer') %>
+<!-- include footer -->
